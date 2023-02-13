@@ -1,0 +1,247 @@
+
+<body>
+  <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div  id="sidebar-wrapper">
+          <div class=" sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+                  <img src="../../assets/imge/msg967261889-974.jpg"></div>
+          <div class="list-group list-group-flush my-3">
+            <a href="#" class="list-group-item list-group-item-action bg-transparent  fw-bold"><i class="fa-solid fa-house-user"></i>
+              Home</a>
+              <button (click)="logout()" href="#" class="list-group-item list-group-item-action bg-transparent  fw-bold"><i class="fa-solid fa-house-user"></i>
+            logout</button>
+              
+
+          
+             
+              
+          </div>
+          
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <nav class="navbar navbar-dark navbar-expand-lg  bg-transparent py-4 px-4">
+            
+              <div class="d-flex align-items-center" id="menu-toggle">
+                  <i class= "fa-solid fa-link primary-text fs-4 me-3 ">
+                  
+                  </i>
+                  <h2 class="fs-2 m-0 ">All of your links are listed below</h2>
+                  <br>
+                  
+                  
+              </div>
+
+            
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                      
+                          <p class="nav-link text-danger" >
+                              <i class="fas fa-user me-2 "></i>Welcome , {{userName}}
+                  </p>
+                        
+                     
+                  </ul>
+              </div>
+          </nav>
+
+          
+
+              <!-- from hereee -->
+
+              <div class="container-fluid g-0">
+               
+              
+                  <div>
+                
+                  <!-- MAIN CONTENT -->
+                  <main >
+                
+                    <!-- TOOBAR TO ADD AND SEARCH Client -->
+                    <div class="toolbar">
+                     
+                
+                      <div class="add-employee m-2">
+                       
+                        <button  type="button" class="m-2 w-30 btn   btn-lg" data-bs-toggle="modal"
+                          data-bs-target="#exampleModal" #addEmployeeButton>Add Link +</button>
+                      </div>
+                
+                     
+                
+                    </div>
+                   
+                
+                    <!-- AREA TO DISPLAY ALL THE EMPLOYEES -->
+                    <div class="employees m-3">
+                
+                      <!-- <div class="row mt-5">
+                        <div class="text-center m-5">
+                          <span class="text-secondary fs-2 fw-bold fst-italic" routerLink="customlink">
+                            There are no Links yet!
+                            
+                          </span>
+                        </div>
+                      </div> -->
+                      
+                      <div class="row mt-4 shadow">
+                        <div class="col">
+                          <app-client-info-show></app-client-info-show>
+
+                        </div>
+
+                      </div>
+                
+                     
+                
+                    </div>
+                  </main>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Links</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <div class="modal-body">
+                
+                        <form>
+                
+                          <!-- FIRST NAME -->
+                          <div class=" Add-Custom  row m-1" >
+                            
+              <button type="submit"   class="btn btn-lg" data-bs-toggle="modal" href="#exampleModalToggle" >Custom Link +</button>
+                            
+                        
+                          
+              
+                          </div>
+                           <!-- JOB INFORMATION -->
+                           <div class="row mt-5">
+                            <div class="col form-heading">
+                              <h6 class=" fst-italic">Or Choose From</h6>
+                            </div>
+                            
+                          </div>
+                          <div *ngFor="let x of linkDetails">
+                
+                          <div class="row m-1" >
+                            
+                            
+            
+                          <button (click)='clickbutton(x.title)' type="button" class="btn btn-lg " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="{{x.icon}}"></i>
+                            {{x.title}}  </button>
+                            
+
+                            </div>
+                          </div>
+                        
+                         
+                      </form>
+              
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+                        
+<!--                        
+                            
+                      
+                
+                
+                       
+                          </div>
+                         
+                        </form>
+                
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              <!-- customLink form -->
+              <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalToggle" >Add your Custom Link</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+
+                      <form [formGroup]="LinksForm" (ngSubmit)="AddClientData(LinksForm)"  >
+                        
+                            
+        <div class="row mt-3">
+            <div class="col">
+              <label for="profile" class="form-label">Profile Image</label>
+              <input type="file" class="form-control" id="profile" (change)="getFile($event)">
+
+            </div>
+          </div>
+            
+
+
+
+                            <div class="row">
+                              <div class="col">
+                                <label for="profile" class="m-1 form-label">Social Media Name</label>
+                                <input type="text" class="m-1 form-control" placeholder="Ex:facebook , etc" formControlName="title" >
+                 
+                              </div>
+                              </div>
+                              <div class="row">
+                              <div class="col">
+                                <label for="profile" class="m-1 form-label">Social Link</label>
+                                <input type="text" class="m-1 form-control" placeholder="https:www.example.com" formControlName="link" >
+                               
+                           
+                              </div> 
+                                
+                            </div>
+                           
+                          <button type="submit" class=" m-3 btn" >Save changes</button>
+                          
+                
+                      </form>
+              
+                      
+              
+                    
+                    
+                    
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+
+
+
+
+  </div>
+</div>   
+               
+  
+
+
+
+
+
+
+   

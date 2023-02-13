@@ -1,0 +1,117 @@
+
+<div class="container-fluid g-0 p-2" *ngFor="let x of linkDetails" >
+
+    <div class="row g-0">
+
+        <div class="table-card col-md-2 d-flex justify-content-center align-items-center">
+            <img [src]="x.icon_image" alt="Profile Image" class="profile">
+        </div>
+        
+
+        <div class="col ps-2">
+
+            <div class="row g-0">
+
+                <div class="col-md-10 text-center">
+                    <span style="color: #4c547d;">no.{{x.id}}</span>
+                </div> 
+
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="btn-group" role="group">
+                        <button (click)="edit(clientToUpdate)"  type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editForm"
+                            >Edit</button>
+                        <button (click)="deletebutton(x.id)"  type="button" class="btn btn-outline-danger"
+                            >Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row g-0 mt-3">
+
+                <div class="col-md">
+
+                    <table class="table table-hover mx-auto">
+                        <thead class="text-center fs-5 fst-italic text-secondary">
+                         
+                        </thead>
+                        <tbody >
+                            <tr>
+                                <td>Social Media Name</td>
+                                <td style="color: #4c547d;">{{x.title}}</td>
+                            </tr>
+                            <tr>
+                                <td>Social Media Link</td>
+                                <td style="color: #4c547d;">{{x.link}}</td>
+                            </tr>
+                          
+                        </tbody>
+                    </table>
+
+                </div>
+
+              
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- EditForm -->
+
+
+  
+  
+  <div class="modal fade" id="editForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editForm">Edit Link</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="LinksForm" (ngSubmit)="allData()" >
+            <div class="row mt-3">
+                <div class="col">
+                   <label for="profile" class="form-label">Profile Image</label>
+                  
+                  
+                  <div class="upload">
+                    <img src="../../assets/imge/noprofil.jpg" width = 100 height = 100 alt="">
+                    <div class="round">
+                      <input type="file" class="form-control" id="profile" #fileInput>
+                      <i class = "fa fa-camera" style = "color: #fff;"></i>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                  
+    
+            <div class="row">
+                <div class="col  form-group">
+                  <label for="name"  class="m-1 form-label">Link name</label>
+                  <input type="text"   class="m-1 form-control" placeholder="ex:facebook" formControlName="title">
+                </div>
+              </div>
+            <div class="row">
+                <div class="col">
+                  <label for="name" class="m-1 form-label">Link</label>
+                  <input type="text"  class="m-1 form-control" placeholder="https://www.example.com" formControlName="link">
+                </div>
+              </div>
+              <div class="modal-footer">
+          
+                <button  type="submit" class="btn btn-primary">Update</button>
+              </div>
+          </form>
+        
+      
+      </div>
+      </div>
+    </div>
+  </div>
